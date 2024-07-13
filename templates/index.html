@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis</title>
+    <style>
+        .sentiment-box {
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            display: inline-block;
+            height: 30px;
+        }
+        .positive-box {
+            background-color: green;
+        }
+        .negative-box {
+            background-color: red;
+        }
+        .neutral-box {
+            background-color: gray;
+            width: 100%;
+        }
+    </style>
+</head>
+<center>
+<body>
+    <h1>Sentiment Analysis</h1>
+    <form method="POST">
+        <label for="review">Enter your review:</label><br>
+        <textarea id="review" name="review" rows="4" cols="50"></textarea><br><br>
+        <input type="submit" value="Analyze">
+    </form>
+    
+    {% if review %}
+    <h2>Review:</h2>
+    <p>{{ review }}</p>
+    <h2>Sentiment Analysis Result:</h2>
+    {% if result == "Neutral" %}
+    <div class="neutral-box sentiment-box">Neutral</div>
+    {% else %}
+    <div class="positive-box sentiment-box" style="width: {{ result.Positive_width }};">Positive: {{ result.Positive }}</div>
+    <div class="negative-box sentiment-box" style="width: {{ result.Negative_width }};">Negative: {{ result.Negative }}</div>
+    {% endif %}
+    {% endif %}
+
+</center>
+</body>
+
+</html>
+
